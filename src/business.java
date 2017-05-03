@@ -65,7 +65,7 @@ public class business extends HttpServlet {
 		      
 		        String md_maintain_relationship = request.getParameter("md_maintain_relationship");
 		        String allow_config = request.getParameter("allow_config");
-		       
+		        String completeness = request.getParameter("completeness");
 		        String error_handling = request.getParameter("error_handling");
 		        String md_archd_relationship = request.getParameter("md_archd_relationship");
 		        String metadata_mgmt = request.getParameter("metadata_mgmt");
@@ -90,11 +90,9 @@ public class business extends HttpServlet {
 		          String myDriver = "org.gjt.mm.mysql.Driver";
 		          String myUrl = "jdbc:mysql://localhost:3306/strutsdb";
 		          Class.forName(myDriver);
-		          Connection conn = DriverManager.getConnection(myUrl, "root", "root");
-		        
-		         
+		          Connection conn = DriverManager.getConnection(myUrl, "root", "root");																																																								          
 		          // the mysql insert statement
-		          String query = " insert into app_info (amd_btn_flg, ref_to_app, app_desc, app_vendor, contract_exp_date, notice_period, contract_value, business_units, txn_module, readonly_date, db_size, loc_data, site_location_data, prod_instance, loc_prod_instance, info_sec_classification, app_migrated_flg, target_app_name, date_migration, archive_reqd_flg, reason_archive_no, gen_comment)"
+		          String query = " insert into business (amd_btn_flg, BA_add_flg, override_rs, data_retained_crs, remain_enc, data_loc_law, secure_zone, data_masking, relationship_blob, reconstruct_data, blob_original_format, maintain_formats, maintain_fieldtypes, one_search, archive_spl, archive_foreign, maintain_relationship, maintain_clob, archive_unstruct_format, rolebased_archive, data_access_bi, md_maintain_relationship, allow_config, completeness, error_handling, md_archd_relationship, metadata_mgmt, search_tools, data_export, config_views)"
 		            + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		          // create the mysql insert preparedstatement
@@ -108,34 +106,34 @@ public class business extends HttpServlet {
 		          //extra=sin.next();
 		          PreparedStatement preparedStmt = conn.prepareStatement(query);
 		          preparedStmt.setString (1, amd_btn_flg);
-		          preparedStmt.setString   (2, ref_to_app);
-		          preparedStmt.setString (3, app_desc);
-		          preparedStmt.setString(4, app_vendor);
-		          preparedStmt.setString(5, contract_exp_date);
-		          preparedStmt.setString (6, notice_period);
-		          preparedStmt.setString   (7, contract_value);
-		          preparedStmt.setString (8, business_units);
-		          preparedStmt.setString(9, txn_module);
-		          preparedStmt.setString(10, readonly_date);
-		          preparedStmt.setString (11, db_size);
-		          preparedStmt.setString   (12, loc_data);
-		          preparedStmt.setString (13, site_location_data);
-		          preparedStmt.setString(14, prod_instance);
-		          preparedStmt.setString(15, loc_prod_instance);
-		          preparedStmt.setString (16, info_sec_classification);
-		          preparedStmt.setString   (17, app_migrated_flg);
-		          preparedStmt.setString (18, target_app_name);
-		          preparedStmt.setDate(19, java.sql.Date.valueOf(date_migration));
-		          preparedStmt.setString(20, archive_reqd_flg);
-		          preparedStmt.setString (21, reason_archive_no);
-		          preparedStmt.setString   (22, gen_comment);
-		          preparedStmt.setString (23, reason_archive_no);
-		          preparedStmt.setString   (24, gen_comment);
-		          preparedStmt.setString (25, reason_archive_no);
-		          preparedStmt.setString   (26, gen_comment);
-		          preparedStmt.setString (27, reason_archive_no);
-		          preparedStmt.setString   (28, gen_comment);
-		          preparedStmt.setString (29, reason_archive_no);
+		          preparedStmt.setString   (2, BA_add_flg);
+		          preparedStmt.setString (3, override_rs);
+		          preparedStmt.setString(4, data_retained_crs);
+		          preparedStmt.setString(5, remain_enc);
+		          preparedStmt.setString (6, data_loc_law);
+		          preparedStmt.setString   (7, secure_zone);
+		          preparedStmt.setString (8, data_masking);
+		          preparedStmt.setString(9, relationship_blob);
+		          preparedStmt.setString(10, reconstruct_data);
+		          preparedStmt.setString (11, blob_original_format);
+		          preparedStmt.setString   (12, maintain_formats);
+		          preparedStmt.setString (13, maintain_fieldtypes);
+		          preparedStmt.setString(14, one_search);
+		          preparedStmt.setString(15, archive_spl);
+		          preparedStmt.setString (16, archive_foreign);
+		          preparedStmt.setString   (17, maintain_relationship);
+		          preparedStmt.setString (18, maintain_clob);
+		          preparedStmt.setString (19, archive_unstruct_format);
+		          preparedStmt.setString(20,  rolebased_archive);
+		          preparedStmt.setString (21, data_access_bi);
+		          preparedStmt.setString   (22, md_maintain_relationship);
+		          preparedStmt.setString (23, allow_config);
+		          preparedStmt.setString   (24, completeness);
+		          preparedStmt.setString (25, error_handling);
+		          preparedStmt.setString   (26, md_archd_relationship);
+		          preparedStmt.setString (27, metadata_mgmt);
+		          preparedStmt.setString   (28, search_tools);
+		          preparedStmt.setString (29, data_export);
 		          preparedStmt.setString   (30, config_views);
 		          
 		          
