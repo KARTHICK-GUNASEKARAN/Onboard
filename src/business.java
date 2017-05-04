@@ -77,13 +77,7 @@ public class business extends HttpServlet {
 		        // do some processing here...
 		         
 		        // get response writer
-		        PrintWriter writer = response.getWriter();
-		         
-		        // build HTML code
-		        String htmlRespone = "<html>";
-		        htmlRespone += "<h2>Your Order Has been Taken</h2>";  
-		        htmlRespone += "</html>";
-		        writer.println(htmlRespone);
+		        
 		        try
 		        {
 		          // create a mysql database connection
@@ -95,15 +89,7 @@ public class business extends HttpServlet {
 		          String query = " insert into business (amd_btn_flg, BA_add_flg, override_rs, data_retained_crs, remain_enc, data_loc_law, secure_zone, data_masking, relationship_blob, reconstruct_data, blob_original_format, maintain_formats, maintain_fieldtypes, one_search, archive_spl, archive_foreign, maintain_relationship, maintain_clob, archive_unstruct_format, rolebased_archive, data_access_bi, md_maintain_relationship, allow_config, completeness, error_handling, md_archd_relationship, metadata_mgmt, search_tools, data_export, config_views)"
 		            + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-		          // create the mysql insert preparedstatement
-		          //Scanner sin=new Scanner(System.in);
-		          //String id,food,extra;
-		          //System.out.println("Enter Your id");
-		          //id=sin.next();
-		          //System.out.println("Please tell what food you want");
-		          //food=sin.next();
-		          //System.out.println("would you like to have extra food today say y or n");
-		          //extra=sin.next();
+		          
 		          PreparedStatement preparedStmt = conn.prepareStatement(query);
 		          preparedStmt.setString (1, amd_btn_flg);
 		          preparedStmt.setString   (2, BA_add_flg);
@@ -146,7 +132,7 @@ public class business extends HttpServlet {
 		        }
 		        catch (Exception e)
 		        {
-		        	 System.out.println("Sorry Your order for today has been already taken");
+		        	
 		          System.err.println("Got an exception!");
 		          System.err.println(e.getMessage());
 		        }
