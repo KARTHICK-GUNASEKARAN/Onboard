@@ -23,7 +23,7 @@ if(rs.getString(2).equals(pwd))
 { 
 	
 	
-		        String redirectURL = "display.jsp";
+		        String redirectURL = "first.jsp";
 	
 		        response.sendRedirect(redirectURL);
 	

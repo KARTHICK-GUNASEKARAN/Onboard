@@ -58,6 +58,14 @@ $(function() {
         adMigratedDet.style.display = adMigrated.value == "Y" ? "block" : "none";
     }
 </script>
+<script language="javascript">
+function editRecord(id){
+    var f=document.form;
+    f.method="post";
+    f.action='display.jsp?id='+id;
+    f.submit();
+}
+</script>
 
 <script type="text/javascript">
     function ShowHideDiv() {
@@ -75,15 +83,18 @@ $(function() {
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
 
-
+	
 <%
+String id=request.getParameter("id");
+int no=Integer.parseInt(id);
+int sumcount=0;
 try {
-Class.forName("org.gjt.mm.mysql.Driver").newInstance();
+Class.forName("com.mysql.jdbc.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "root");
-String query = "select * from app_info where id=(select max(id) from app_info)";
+String query = "select * from app_info where id='"+no+"'";
 Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery(query);
-{
+while(rs.next()){
 %>
 <form class="form-signin"name="loginForm" method="post" action="Onb">
 <div class="container">
@@ -127,7 +138,7 @@ ResultSet rs = st.executeQuery(query);
                             <a href="component.jsp">Component</a>
                         </li>
                         <li>
-                            <a href="#">Technical</a>
+                            <a href="sample.jsp">Technical</a>
                         </li>
                         <li>
                             <a href="business.jsp">Business</a>
@@ -146,7 +157,7 @@ ResultSet rs = st.executeQuery(query);
                             <div id="collapse1" class="panel-collapse collapse"> 
                                 <div class="panel-body text-left">
                                 
-                                 <%if(rs.next()){ %>
+                                 
                                     <form role="form">
                                     
                                         <div class="form-group"> 
@@ -494,8 +505,7 @@ ResultSet rs = st.executeQuery(query);
                                             </select>
                                         </div>        
                                                                         
-                                    </form>
-                                      <% } %> 
+                                   
                                 </div>                                 
                             </div>                             
                         </div>                       
