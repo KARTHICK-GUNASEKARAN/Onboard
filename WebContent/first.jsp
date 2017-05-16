@@ -73,7 +73,7 @@ $(function() {
 function editRecord(id){
     var f=document.form;
     f.method="post";
-    f.action='display.jsp?id='+id;
+    f.action='grid.jsp';
     f.submit();
 }
 </script>
@@ -84,13 +84,13 @@ function editRecord(id){
 
 
 
-<form method="post" name="form">
+<form method="post" name="form" action="Appin">
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 
                     
-                    <a class="navbar-brand" href="#">Project name</a>
+                    <a class="navbar-brand" href="#">Onboard</a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -103,7 +103,7 @@ function editRecord(id){
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="#">Help</a>
+                            <a href="Login.html">Logout</a>
                         </li>
                     </ul>
                     
@@ -154,7 +154,7 @@ ResultSet rs = st.executeQuery(query);
 while(rs.next()){
 %>
 <tr>
-<td name="name" onmouseover="editRecord(<%=rs.getString(1)%>);" ><%=rs.getString(1)%></td>
+<td name="name" onClick="editRecord(<%=rs.getString(1)%>);" ><a><%=rs.getString(1)%></a></td>
 <td><%=rs.getString(2)%></td>
 
 </tr>
@@ -174,9 +174,9 @@ e.printStackTrace();
                     </div> 
        <div>
        <label>Application Name:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="appname">
                     <br>
-                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="submit" class="btn btn-primary" onClick="reload">Add</button>
                     </div>
        </div>
                 

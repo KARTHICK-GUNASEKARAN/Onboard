@@ -122,7 +122,7 @@ public class Onb extends HttpServlet {
           preparedStmt.setString (16, info_sec_classification);
           preparedStmt.setString   (17, app_migrated_flg);
           preparedStmt.setString (18, target_app_name);
-          preparedStmt.setDate(19, java.sql.Date.valueOf(date_migration));
+          preparedStmt.setString(19, (date_migration));
           preparedStmt.setString(20, archive_reqd_flg);
           preparedStmt.setString (21, reason_archive_no);
           preparedStmt.setString   (22, gen_comment);
@@ -137,12 +137,12 @@ public class Onb extends HttpServlet {
         }
         catch (Exception e)
         {
-        	 System.out.println("Sorry Your order for today has been already taken");
+        	 
           System.err.println("Got an exception!");
           System.err.println(e.getMessage());
         }
         // return response
-        response.sendRedirect("display.jsp");
+        response.sendRedirect("component.jsp");
 		
 
 	}

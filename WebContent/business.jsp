@@ -91,7 +91,7 @@ ResultSet rs = st.executeQuery(query);
             <div class="container-fluid">
                 
                     
-                    <a class="navbar-brand" href="#">Project name</a>
+                    <a class="navbar-brand" href="#">Onboard</a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -104,7 +104,7 @@ ResultSet rs = st.executeQuery(query);
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="#">Help</a>
+                            <a href="Login.html">Logout</a>
                         </li>
                     </ul>
                     
@@ -127,7 +127,7 @@ ResultSet rs = st.executeQuery(query);
                             <a href="component.jsp">Component</a>
                         </li>
                         <li>
-                            <a href="#">Technical</a>
+                            <a href="sample.jsp">Technical</a>
                         </li>
                         <li>
                             <a href="business.jsp">Business</a>

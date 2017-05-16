@@ -58,7 +58,14 @@ $(function() {
         adMigratedDet.style.display = adMigrated.value == "Y" ? "block" : "none";
     }
 </script>
-
+<script language="javascript">
+function editRecord(id){
+    var f=document.form;
+    f.method="post";
+    f.action='display.jsp?id='+id;
+    f.submit();
+}
+</script>
 
 <script type="text/javascript">
     function ShowHideDiv() {
@@ -78,12 +85,10 @@ $(function() {
 
 	
 <%
-
 try {
-	
 Class.forName("com.mysql.jdbc.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "root");
-String query = "select * from app_info where id=(select max(id) from app_info)";
+String query = "select * from app_info where id=max(id)";
 Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery(query);
 while(rs.next()){
@@ -94,7 +99,7 @@ while(rs.next()){
             <div class="container-fluid">
                 
                     
-                    <a class="navbar-brand" href="#">Onboard</a>
+                    <a class="navbar-brand" href="#">Project name</a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -107,7 +112,7 @@ while(rs.next()){
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="Login.html">Logout</a>
+                            <a href="#">Help</a>
                         </li>
                     </ul>
                     
@@ -120,7 +125,7 @@ while(rs.next()){
             <br>
                 <div class="col-sm-2 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li >
+                        <li class="active">
                             <a href="first.jsp">Home </a>
                         </li>
                         <li >
@@ -150,7 +155,7 @@ while(rs.next()){
                                 <div class="panel-body text-left">
                                 
                                  
-                                  
+                                    <form role="form">
                                     
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput526">Application Name:</label>
