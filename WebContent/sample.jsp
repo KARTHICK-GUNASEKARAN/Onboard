@@ -14,6 +14,37 @@
   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">
+    function EnableDisableTextBox(chkROD) {
+        var txtROD = document.getElementById("txtROD");
+        txtROD.disabled = chkROD.checked ? false : true;
+        if (!txtROD.disabled) {
+            txtROD.focus();
+        }
+        
+    }
+</script>
+<script type="text/javascript">
+    function EnableDisableTextBox(chkROD1) {
+        var txtROD1 = document.getElementById("txtROD1");
+        txtROD1.disabled = chkROD1.checked ? false : true;
+        if (!txtROD1.disabled) {
+            txtROD1.focus();
+        }
+        
+    }
+</script>
+<script type="text/javascript">
+    function EnableDisableTextBox(chkROD2) {
+        var txtROD2 = document.getElementById("txtROD2");
+        txtROD2.disabled = chkROD2.checked ? false : true;
+        if (!txtROD2.disabled) {
+            txtROD2.focus();
+        }
+        
+    }
+</script>
 </head>
 <body>
 <form class="form-signin" name="loginForm" method="post" action="UploadServlet" enctype="multipart/form-data">
@@ -70,10 +101,16 @@
                     <h1 class="page-header">Intake</h1>
                     <h3>Technical</h3>
                     <center>
-	<h1>File Upload</h1>
 	
-		<input type="file" name="file" size="60" /><br />
-		<br /> <input type="submit" value="Upload" />
+	<label for="chkROD" text-align:"left">
+    										<input type="checkbox" id="chkROD" onclick="EnableDisableTextBox(this)" />
+    														Are there any Schema diagrams or Screen or Report Requirement Template?
+												</label>
+	
+												
+		<input type="file" name="file" size="60"  id="txtROD2" disabled="disabled" /><br />
+		<br /> <input type="submit" class="btn btn-primary"  value="Upload" />
+		
 	</form>
 </center>
        </div>

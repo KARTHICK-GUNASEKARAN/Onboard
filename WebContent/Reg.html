@@ -32,15 +32,20 @@
 					<img src="assets/images/logo1.png" class="img-responsive" alt="" />
 					<input type="text" name="userid" placeholder="Username" required class="form-control input-lg" />
 					<input type="password" name="pwd" placeholder="Password" required class="form-control input-lg" />
+					<input type="password" name="cnfpwd" placeholder="Confirm Password" required class="form-control input-lg" />
 					<input type="text" name="fname" placeholder="Firstname" required class="form-control input-lg" />
 					<input type="text" name="lname" placeholder="Lastname" required class="form-control input-lg" />
 					<input type="text" name="email" placeholder="Email" required class="form-control input-lg" />
 					<input type="text" name="proj" placeholder="Project Name" required class="form-control input-lg" />
-					<input type="text" name="designation" placeholder="Designation" required class="form-control input-lg" />
-					<input type="text" name="role" placeholder="Role" required class="form-control input-lg" />
-					<input type="text" name="workphone" placeholder="Workphone" required class="form-control input-lg" />
-					<input type="text" name="company" placeholder="Company" required class="form-control input-lg" />
-					<button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Register</button>
+					
+					<select id="role" name="role" class="form-control input-lg">
+<option value="Admin">Admin</option>
+<option value="SME">SME</option>
+<option value="BA">BA</option>
+</select>
+					<input type="text" name="workphone" placeholder="Workphone"  class="form-control input-lg" />
+					<input type="text" name="company" placeholder="Company"  class="form-control input-lg" />
+					<button type="submit" name="go" class="btn btn-lg btn-primary btn-block" onclick="window.location= 'Login.html';">Register</button>
 					<div>
 						Already Registered?<a href="Login.html">Login</a>
 					</div>
