@@ -1,10 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
-	"http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <script type='text/javascript'
+  src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ <script type='text/javascript'
   src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -47,9 +54,80 @@
       date_input.datepicker(options);
     })
 </script>   
-</head>
-<body>
   
+<script type="text/javascript">
+    function EnableDisableTextBox(chkROD) {
+        var txtROD = document.getElementById("txtROD");
+        txtROD.disabled = chkROD.checked ? false : true;
+        if (!txtROD.disabled) {
+            txtROD.focus();
+        }
+        
+    }
+</script>
+<script>
+
+$(function() {
+    $("#datamig").change(function() {
+        if ($(this).val() == "yes") {
+            console.log(true);
+            $("#textbox").removeAttr("disabled");
+        }
+        else {
+            console.log(false);
+            $("#textbox").attr("disabled", "disabled");
+        }
+    });
+});
+$(function() {
+    $("#datamig").change(function() {
+        if ($(this).val() == "yes") {
+            console.log(true);
+            $("#textbox1").removeAttr("disabled");
+        }
+        else {
+            console.log(false);
+            $("#textbox1").attr("disabled", "disabled");
+        }
+    });
+});
+
+
+</script>
+<script type="text/javascript">
+    function ShowHideDiv() {
+        var adMigrated = document.getElementById("adMigrated");
+        var adMigratedDet = document.getElementById("adMigratedDet");
+        adMigratedDet.style.display = adMigrated.value == "Y" ? "block" : "none";
+    }
+</script>
+
+<script type="text/javascript">
+    function ShowHideDiv() {
+        var arcNeed = document.getElementById("arcNeed");
+        var arcReason = document.getElementById("arcReason");
+        arcReason.style.display = arcNeed.value == "N" ? "block" : "none";
+        var arcComment = document.getElementById("arcComment");
+        arcComment.style.display = arcNeed.value == "O" ? "block" : "none";
+    }
+</script>
+
+<script language="javascript">
+function editRecord(id){
+    var f=document.form;
+    f.method="post";
+    f.action='first.jsp';
+    f.submit();
+}
+</script>
+  </head><!--from  w  w w  . ja  va 2 s.co  m-->
+  <body style='margin:30px'>
+  <%@page language="java"%>
+<%@page import="java.sql.*"%>
+
+
+
+<form method="post" name="form" action="Project">
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
@@ -81,35 +159,26 @@
             <br>
                 <div class="col-sm-2 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active">
-                            <a href="display.jsp">Home </a>
+                    <br>
+                        <li >
+                            <a href="display.jsp">Admin </a>
                         </li>
-                        <li>
-                            <a href="display.jsp">Functional</a>
-                        </li>
-                        <li>
-                            <a href="component.jsp">Component</a>
-                        </li>
-                        <li>
-                            <a href="sample.jsp">Technical</a>
-                        </li>
-                        <li ><a href="business.jsp">Business</a></li>
-                            
                         
                     </ul>
                 </div>
                 
                 <div class="col-md-9">
                     <h1 class="page-header">Projects</h1>
-                    <center>
-                    <div class="panel panel-default">	
-                     <div id="one" class="panel-body text-left">
+                    
+                    <div class="panel-group" id="panels1"> 
+                                                <div class="panel panel-default">
+                <div id="one" class="panel-body text-left">
                      
                      <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
   New Project 
 </button>
-<form method="post" action="Project">
+
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -162,20 +231,65 @@
   
       
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="Submit" class="btn btn-primary" onClick="reload">Save changes</button>
        
       </div>
     </div>
   </div>
 </div>
     
-  </form>                  
+                
 	
 	</div>
-	</div>
-</center>
 
+<table class="table table-striped">
+<tr><th></th><th>Project Name</th><th>Company</th></tr>
+<%
+Connection con = null;
+String url = "jdbc:mysql://localhost:3306/";
+String db = "strutsdb";
+String driver = "com.mysql.jdbc.Driver";
+String userName ="root";
+String password="root";
+
+int sumcount=0;
+Statement st;
+try{
+Class.forName(driver).newInstance();
+con = DriverManager.getConnection(url+db,userName,password);
+String query = "select * from projinfo";
+st = con.createStatement();
+ResultSet rs = st.executeQuery(query);
+%>
+<%
+while(rs.next()){
+%>
+<tr>
+<td name="name" onClick="editRecord(<%=rs.getString(1)%>);" ><a><%=rs.getString(1)%></a></td>
+<td><%=rs.getString(2)%></td>
+<td><%=rs.getString(4)%></td>
+</tr>
+<%
+}
+%>
+<%
+}
+catch(Exception e){
+e.printStackTrace();
+}
+%>
+</table>                   
+                        </div>                       
+                  
+                        
+                    </div> 
+     
        </div>
-
-</body>
+                
+            </div>
+            
+      
+        
+</form>
+  </body>
 </html>

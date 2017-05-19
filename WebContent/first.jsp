@@ -131,7 +131,7 @@ function editRecord(id){
                                                 <div class="panel panel-default">
      
 
-<table class="table" border="1">
+<table class="table table-striped">
 <tr><th></th><th>Application Name</th></tr>
 <%
 Connection con = null;

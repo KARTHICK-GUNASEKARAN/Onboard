@@ -14,7 +14,7 @@ function editRecord(id){
 
 <br><br>
 <form method="post" name="form">
-<table border="1">
+<table >
 <tr><th>Name</th><th>Address</th><th>Contact No</th><th>Email</th></tr>
 <%
 Connection con = null;
