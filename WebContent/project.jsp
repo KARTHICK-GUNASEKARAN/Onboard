@@ -1,6 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Blueprint: View Mode Switch</title>
+		<meta name="description" content="Blueprint: View Mode Switch" />
+		<meta name="keywords" content="view mode, switch, css, style, grid, list, template" />
+		<meta name="author" content="Codrops" />
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/modernizr.custom.js"></script>
+	
 <script type='text/javascript'
   src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <link rel="stylesheet"
@@ -120,16 +131,17 @@ function editRecord(id){
     f.submit();
 }
 </script>
-  </head><!--from  w  w w  . ja  va 2 s.co  m-->
-  <body style='margin:30px'>
-  <%@page language="java"%>
+  
+	</head>
+	<body>
+	<%@page language="java"%>
 <%@page import="java.sql.*"%>
 
 
 
 <form method="post" name="form" action="Project">
-<div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 
                     
@@ -153,31 +165,78 @@ function editRecord(id){
                 </div>
             </div>
         </nav>
-        </div>
+        <br>
+        <br>
+        <br>
        
-            <div class="row">
-            <br>
-                <div class="col-sm-2 col-md-2 sidebar">
-                    <ul class="nav nav-sidebar">
-                    <br>
-                        <li >
-                            <a href="display.jsp">Admin </a>
-                        </li>
-                        
-                    </ul>
-                </div>
-                
-                <div class="col-md-9">
-                    <h1 class="page-header">Projects</h1>
-                    
-                    <div class="panel-group" id="panels1"> 
-                                                <div class="panel panel-default">
-                <div id="one" class="panel-body text-left">
-                     
-                     <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+         
+        <span><h1 class="page-header" >Projects</h1></span>
+       
+			<div class="main">
+				<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+				
+					<div class="cbp-vm-options">
+					<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
   New Project 
 </button>
+						<a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid">Grid View</a>
+						<a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
+					</div>
+		<%
+Connection con = null;
+String url = "jdbc:mysql://localhost:3306/";
+String db = "strutsdb";
+String driver = "com.mysql.jdbc.Driver";
+String userName ="root";
+String password="root";
+
+int sumcount=0;
+Statement st;
+try{
+Class.forName(driver).newInstance();
+con = DriverManager.getConnection(url+db,userName,password);
+String query = "select * from projinfo";
+st = con.createStatement();
+ResultSet rs = st.executeQuery(query);
+%>
+	<ul>
+<%
+while(rs.next()){
+%>			
+				
+						<li>
+							
+							
+							<div class="cbp-vm-price" ><%=rs.getString(1)%></div>
+							<h3 class="cbp-vm-title"><%=rs.getString(2)%></h3>
+							<div class="cbp-vm-details">
+								<%=rs.getString(4)%>
+							</div>
+							 <div class="progress">
+  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10"
+  aria-valuemin="0" aria-valuemax="100" style="width:10%">
+    10%
+  </div>
+</div> 
+							<a class="btn btn-primary" href="#" name="name" onClick="editRecord(<%=rs.getString(1)%>);">Add Application</a>
+						</li>
+												
+					
+					<%
+}
+%>
+</ul>
+<%
+}
+catch(Exception e){
+e.printStackTrace();
+}
+%>
+				</div>
+			</div><!-- /main -->
+			      <div id="one" class="panel-body text-left">
+                     
+                     <!-- Button trigger modal -->
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -241,55 +300,8 @@ function editRecord(id){
                 
 	
 	</div>
-
-<table class="table table-striped">
-<tr><th></th><th>Project Name</th><th>Company</th></tr>
-<%
-Connection con = null;
-String url = "jdbc:mysql://localhost:3306/";
-String db = "strutsdb";
-String driver = "com.mysql.jdbc.Driver";
-String userName ="root";
-String password="root";
-
-int sumcount=0;
-Statement st;
-try{
-Class.forName(driver).newInstance();
-con = DriverManager.getConnection(url+db,userName,password);
-String query = "select * from projinfo";
-st = con.createStatement();
-ResultSet rs = st.executeQuery(query);
-%>
-<%
-while(rs.next()){
-%>
-<tr>
-<td name="name" onClick="editRecord(<%=rs.getString(1)%>);" ><a><%=rs.getString(1)%></a></td>
-<td><%=rs.getString(2)%></td>
-<td><%=rs.getString(4)%></td>
-</tr>
-<%
-}
-%>
-<%
-}
-catch(Exception e){
-e.printStackTrace();
-}
-%>
-</table>                   
-                        </div>                       
-                  
-                        
-                    </div> 
-     
-       </div>
-                
-            </div>
-            
-      
-        
-</form>
-  </body>
+		</div><!-- /container -->
+		<script src="js/classie.js"></script>
+		<script src="js/cbpViewModeSwitch.js"></script>
+	</body>
 </html>
