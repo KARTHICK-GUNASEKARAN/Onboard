@@ -40,12 +40,15 @@ public class Project extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-				String projectname = request.getParameter("Projectname");
-		        String descr = request.getParameter("Descr");
-		        String company = request.getParameter("Company");
-		        String startdate = request.getParameter("Startdate");
-		        String enddate = request.getParameter("Enddate");
-		          
+				String projectname = request.getParameter("projectname");
+		        String descr = request.getParameter("descr");
+		        String appno = request.getParameter("appno");
+		        String Startdate = request.getParameter("Startdate");
+		        String Intdate = request.getParameter("Intdate");
+		        String Plandate = request.getParameter("Plandate");
+		        String Execdate = request.getParameter("Execdate");
+		        String Hyperdate = request.getParameter("Hyperdate");
+		        String Enddate = request.getParameter("Enddate"); 
 		        
 		        // do some processing here...
 		         
@@ -67,8 +70,8 @@ public class Project extends HttpServlet {
 		        
 		         
 		          // the mysql insert statement
-		          String query = " insert into projinfo (projectname, descr, company)"
-		            + " values (?, ?, ?)";
+		          String query = " insert into projinfo (projectname, descr,appno,Startdate,Intdate,Plandate,Execdate,Hyperdate,Enddate)"
+		            + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		          // create the mysql insert preparedstatement
 		          //Scanner sin=new Scanner(System.in);
@@ -82,7 +85,15 @@ public class Project extends HttpServlet {
 		          PreparedStatement preparedStmt = conn.prepareStatement(query);
 		          preparedStmt.setString (1, projectname);
 		          preparedStmt.setString   (2, descr);
-		          preparedStmt.setString (3, company);
+		          preparedStmt.setString (3, appno);
+		          preparedStmt.setString   (4, Startdate);
+		          preparedStmt.setString (5, Intdate);
+		          preparedStmt.setString   (6, Plandate);
+		          preparedStmt.setString (7, Execdate);
+		          preparedStmt.setString   (8, Hyperdate);
+		          preparedStmt.setString (9, Enddate);
+		      
+		          
 		          		          
 		          
 		          

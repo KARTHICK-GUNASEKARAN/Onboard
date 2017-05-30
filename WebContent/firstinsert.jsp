@@ -122,12 +122,6 @@ function editRecord(id){
     f.action='newapplication.jsp?id='+id;
     f.submit();
 }
-function editR(id){
-    var f=document.form;
-    f.method="post";
-    f.action='business.jsp?appid='+id;
-    f.submit();
-}
 </script>
   
 	</head>
@@ -137,7 +131,7 @@ function editR(id){
 <%@page import="java.sql.*"%>
 
 <%
-String pid= request.getParameter("item");
+String pid= (String)request.getAttribute("value");
 int no=Integer.parseInt(pid);
 System.out.println(pid);
 %>
@@ -222,7 +216,7 @@ while(rs.next()){
 							
 							
 							
-							<h3 class="cbp-vm-title left-col primary" name="name" value="<%= rs.getString(1)%>" ><%=rs.getString(3)%></h3>
+							<h3 class="cbp-vm-title left-col primary" name="name" value="<%= rs.getString(1)%>" ><%=rs.getString(2)%></h3>
 							<center><div class="progress center-col cbp-vm-detail">
   <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10"
   aria-valuemin="0" aria-valuemax="100" style="width:10%">
@@ -234,8 +228,8 @@ while(rs.next()){
 		
 </center>
 			
-							<h4 class="cbp-vm-title right-col primary">Design</h4>	
-							<button type="button" class="btn btn-primary" onClick="editR(<%=rs.getString(1)%>);">
+							<h4 class="cbp-vm-title right-col primary"><%=rs.getString(5)%></h4>	
+							<button type="button" class="btn btn-primary" onClick="editRecord(<%=rs.getString(1)%>);">
  View/Update
 </button>
 						</li>
@@ -261,19 +255,6 @@ e.printStackTrace();
       
         
 </form>
- <center>
-      <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link" href="project.jsp" tabindex="-1">Previous</a>
-    </li>
-
-    <li class="page-item disabled">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
-</center>
 <script src="js/classie.js"></script>
 		<script src="js/cbpViewModeSwitch.js"></script>
   </body>

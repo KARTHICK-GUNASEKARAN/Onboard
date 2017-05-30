@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/com.mysql.jdbc_5.1.5.jar.zip"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/jtds-1.3.1.jar.zip"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/mysql-connector-java-5.1.42 (1).zip"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/mysql-connector-java-5.1.42.zip"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/mysql-connector-java-6.0.5.zip"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/ojdbc6.jar (1).zip"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/P3/Downloads/javax.servlet.jsp.jstl-1.2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/P3/Downloads/javax.servlet.jsp.jstl-api-1.2.1.jar.zip"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -11,6 +11,21 @@
   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="expdate"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'yyyy/mm/dd',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+    </script>
   
 <script type="text/javascript">
     function EnableDisableTextBox(chkROD) {
@@ -118,20 +133,21 @@ ResultSet rs = st.executeQuery(query);
                 <div class="col-sm-2 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li class="active">
-                            <a href="display.jsp">Home </a>
+                            <a href="project.jsp">Home </a>
                         </li>
-                        <li>
-                            <a href="display.jsp">Functional</a>
+                        <li >
+                            <a href="display.jsp">Application Information</a>
                         </li>
-                        <li>
-                            <a href="component.jsp">Component</a>
-                        </li>
+                        <li class="active"><a href="business.jsp"><bold>Business</bold></a></li>
+                            
+                        
                         <li>
                             <a href="sample.jsp">Technical</a>
                         </li>
                         <li>
-                            <a href="business.jsp">Business</a>
+                            <a href="sample.jsp">Requirements</a>
                         </li>
+                       
                     </ul>
                 </div>
                 
@@ -140,190 +156,492 @@ ResultSet rs = st.executeQuery(query);
                     <h1 class="page-header">Intake</h1>
                     <h3>Business</h3>
 					<div class="panel-group" id="panels1"> 
+                       
                         <div class="panel panel-default"> 
                             <div class="panel-heading"> 
-                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse1">Screen/Report Requirements</a> </h4> 
+                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse1">Application Information</a> </h4> 
                             </div>                             
-                            <div id="collapse1" class="panel-collapse collapse"> 
+                            <div id="collapse1" class="panel-collapse collapse in"> 
                                 <div class="panel-body">
                                     <form role="form"> 
-                                        <div class="checkbox"> 
+                                       <div class="form-group"> 
+                                            <label class="control-label" for="formInput198">
+                                               Legacy Application Name&nbsp;
+</label>
+                                            <input type="text" class="form-control" id="formInput198" placeholder="Legacy Application Name" name="legappname" >
+                                        </div>
+                                        
+                                
+                                        <div class="form-group"> 
+                                            <label class="control-label" for="formInput229">References to Application
+</label>
+                                            <input type="text" class="form-control" id="formInput229" placeholder="References" name="reftoapp" >
+                                        </div>
+                                       <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Tracking ID</label>
+            <input placeholder="ID" id="date" name="tid" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>  
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Description</label>
+            <input placeholder="Description" id="date" name="descr" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>  
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Legacy Application Vendor/Manufacturer</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>  
+                                         <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Contract Expiration Date</label>
+            <input placeholder="dd/mm/yyyy" id="date" name="expdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>  
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Notice Period for Expiration of Contract</label>
+            <input placeholder="Description" id="date" name="descr" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>  
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Contract Value of Application</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>  
+        <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">This
-                                                Page should have an option of add/modify/delete button
+                                                <input type="checkbox">Business Units Involved
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">After
-                                                the process of development, Business Analyst will be adding the requirements
-                                                that are specific to the application with respect to it screens/Reports
+                                                <input type="checkbox">&nbsp;Read Only Date                       
                                             </label>                                             
-                                        </div>                                         
-                                    </form>
+                                        </div>
+                                        
+                                         <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Read Only Date</label>
+            <input placeholder="dd/mm/yyyy" id="date" name="expdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>
+         <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Comment</label>
+            <input placeholder="Description" id="date" name="descr" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>  
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">If the applications transitions has dependencies?</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>    
+         <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">What is the date Range of this Data?</label>
+            <input placeholder="dd/mm/yyyy" id="date" name="expdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>  
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Size of Database</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>  
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Location of Data</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>  
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Site Location of Data</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>
+         <div class="form-group"> 
+                                            <label class="control-label" for="formInput26">Does the application needs archival?</label>                                             
+                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <option></option>
+                                                <option>Yes</option>                                                 
+                                                <option>No</option>  
+                                                <option>Other</option>                                                 
+                                            </select>
+                                        </div>  
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Reason</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>  
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Comments</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+         <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Is this Application's data the source of Truth?
+                                            </label>                                             
+                                        </div> 
+                                        
+                                       
                                 </div>                                 
                             </div>                             
                         </div>
                         <div class="panel panel-default"> 
                             <div class="panel-heading"> 
-                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2">Archive Requirements</a> </h4> 
+                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2">Legacy Retention Information</a> </h4> 
                             </div>                             
                             <div id="collapse2" class="panel-collapse collapse"> 
                                 <div class="panel-body">
-                                    <form role="form"> 
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">Current Legal holds on the application data must be applied to the application's archived data to override the Retention schedule
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">Data from application must be retained based on the Client Retention schedule
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">Archived Data encrypted must remain encrypted for data classified as Personal Sensitive or Personal Confidential
-                                            </label>
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">Data Localization Laws must be followed where relevant
-                                                <br>
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">Storage must be in a secure zone with minimal access
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">Data Masking must be applied to archived data classified as Business Restricted
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">&nbsp;The System supports archiving structured formats maintaining the relationship to blobs                       
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">&nbsp;The System has tools to reconstruct the data in its original format                        
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">The System allows for user viewing of blob data in its original format in relationship to its structured data                        
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox"> Archived data maintains its field properties and formats from the source system (i.e. decimals, %, commas, .00x, YYY-MM-DD) to display values defined in Views and schemas                      
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">Archived data maintains its field types from the source system (i.e. STRING, Integer, CHAR, VCHAR, Date) to display values defined in Views and schemas                        
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">At least one search field must be completed to retrieve data                        
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">The System supports archiving special characters as found in source data to include Foreign characters                        
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">The System supports archiving Foreign Language data and maintains the Language in the archive                        
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">The System Maintains table relationships                       
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">The System Maintains CLOBs from source systems
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">The System supports archiving unstructured formats such as word, excel, PowerPoint, pdf                        
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">Access to the Archive is role based and controlled through Active Directory                      
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">Archived data must be accessible for use in existing BI data warehouses or AA Reporting solutions after XML data has been converted
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">Archived Master data marked as Master Data from the source system will     maintain is data relationships
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">The System allows for configuration of data views                       
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">Completeness Control - record level check (The number of records sent from the Application are compared to the number of records posted to the target.)                       
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">Error Handling Control - record level check (During the load, records deemed as errors based on program logic will be written to an exception log in their entirety)                        
-                                            </label>                                             
-                                        </div>
-                                        <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input type="checkbox">Archived Master data must maintain data relationships to application's archived data                        
-                                            </label>                                             
-                                        </div>
+                                    <form role="form">
+                                    
+                                      <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Record code of Application</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+                                        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Trigger Date</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Period of Retention</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Table Name/s where Retention need to apply</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+         <label text-align:"left">Retention Requirement</label>
+    										<input type="file" name="file" size="60" />
+    														
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Name of the Legal Retention & e-Discovery SME</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+        
+       
+      
+         <div class="form-group"> 
+                                            <label class="control-label" for="formInput26">Does any Records have legal holds/Tax Holds or any indication?</label>                                             
+                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <option></option>
+                                                <option>Yes</option>                                                 
+                                                <option>No</option>  
+                                                <option>Other</option>                                                 
+                                            </select>
+                                        </div>   
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Who or what entity provided legal or tax hold identification</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+         <div class="form-group"> 
+                                            <label class="control-label" for="formInput26">Should this application's data be aechived?</label>                                             
+                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <option></option>
+                                                <option>Yes</option>                                                 
+                                                <option>No</option>  
+                                                                                           
+                                            </select>
+                                        </div>  
+        <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Brief Explanation</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>                                 
                                     </form>
                                 </div>                                 
                             </div>                             
                         </div>
                         <div class="panel panel-default"> 
                             <div class="panel-heading"> 
-                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3">System Requirements</a> </h4> 
+                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3">Archive Data Management</a> </h4> 
                             </div>                             
                             <div id="collapse3" class="panel-collapse collapse"> 
                                 <div class="panel-body">
                                     <form role="form"> 
+                                         <div class="form-group"> 
+                                            <label class="control-label" for="formInput26">Is this application's been used for BI report?</label>                                             
+                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <option></option>
+                                                <option>Yes</option>                                                 
+                                                <option>No</option>  
+                                                                                           
+                                            </select>
+                                        </div>  
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">The System supports metadata management and indexing
+                                                <input type="checkbox">Is BI aware of using new/alternate target application data to support operational report                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">)- BI Engagement should be initiated by Application owner and completed prior archiving     </label>
+                                        </div>
+                                                                              
+                                    </form>
+                                </div>                                 
+                            </div>                             
+                        </div>
+                        <div class="panel panel-default"> 
+                            <div class="panel-heading"> 
+                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse4">System Requirements</a> </h4> 
+                            </div>                             
+                            <div id="collapse4" class="panel-collapse collapse"> 
+                                <div class="panel-body">
+                                    <form role="form"> 
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Account Credit Card
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">The System provides advanced search tools to include data parameters and the standard search tools
+                                                <input type="checkbox">Account Number - Financial
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Based on search parameters, data can be exported out of the system for analysis
+                                                <input type="checkbox">Date of Birth
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">The System allows for configuration of data views. Archive Screen/views can be configured to allow archive users to view data in a format similar to the legacy application
+                                                <input type="checkbox">Driver's License Number
                                                 <br>
                                             </label>                                             
-                                        </div>                                         
+                                        </div> 
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Email Address
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">family Status
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Gender
+                                            </label>
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Geo Location
+                                                <br>
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Image/Video
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Income
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">IP Address
+                                            </label>
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Martial Status
+                                                <br>
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Mobile Device Id
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Name
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Phone Number
+                                            </label>
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Physical/Mailing Address
+                                                <br>
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Physical Description
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Race/Ethnicity
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Religion
+                                            </label>
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Sexual Preference
+                                                <br>
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">SSN/SIN
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Others
+                                            </label>                                             
+                                        </div>
+                                         <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Brief Explanation</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+        <h5>Security Information:
+                                         <div class="form-group"> 
+                                            <label class="control-label" for="formInput26">Does the application have localization requirement/ regulations</label>                                             
+                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <option></option>
+                                                <option>Yes</option>                                                 
+                                                <option>No</option>  
+                                                                                           
+                                            </select>
+                                        </div> 
+                                        <div class="form-group"> 
+                                            <label class="control-label" for="formInput26">List of Countries where localization requirement/ regulations apply</label>                                             
+                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <option></option>
+                                                <option>Yes</option>                                                 
+                                                <option>No</option>  
+                                                                                           
+                                            </select>
+                                        </div> 
+                                        <div class="form-group"> 
+                                            <label class="control-label" for="formInput26">Are the Localization requirements/regulations enforced with infrastructure or geofencing</label>                                             
+                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <option></option>
+                                                <option>Yes</option>                                                 
+                                                <option>No</option>  
+                                                                                           
+                                            </select>
+                                        </div> 
+                                         <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Infrastructure Localization enforcement, please list the locations of the datacenters</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+                                        <div class="form-group"> 
+                                            <label class="control-label" for="formInput26">External access required for archived data</label>                                             
+                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <option></option>
+                                                <option>Yes</option>                                                 
+                                                <option>No</option>  
+                                                                                           
+                                            </select>
+                                        </div>  
+                                         <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Describe who or what external entity needs access </label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+         <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">User Name</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+         <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Role Description</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+         <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Reason for Access</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+         <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Frequency of Access</label>
+            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+         <div class="form-group row log-date">
+          <div class="col-md-12">
+            <label class="control-label required">Additional System Requirements</label>
+            <input placeholder="Countries/Modules" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div> 
+                                                                               
                                     </form>
                                 </div>                                 
                             </div>                             
@@ -331,8 +649,8 @@ ResultSet rs = st.executeQuery(query);
                     </div>
        
 					       <button type="submit" class="btn btn-primary btn pull-left" >Save</button>&nbsp;
-        <button type="button" class="btn btn-primary">Submit</button>&nbsp;
-                    <button type="button" class="btn btn-default" href="index.html">Cancel</button> 
+
+                    <button type="button" class="btn btn-default" onclick="location.href = 'grid.jsp';">Cancel</button> 
        </div>
                 
             </div>
@@ -346,4 +664,17 @@ catch(Exception e){}
 %>
 </form>
   </body>
+  <center>
+      <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="grid.jsp" tabindex="-1">Previous</a>
+    </li>
+    
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+</center>
 </html>

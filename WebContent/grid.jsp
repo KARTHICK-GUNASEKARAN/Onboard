@@ -22,8 +22,16 @@
       padding: 25px;
     }
   </style>
+  <script language="javascript">
+
+</script>
 </head>
 <body>
+<%
+String prid= request.getParameter("id");
+int no=Integer.parseInt(prid);
+System.out.println(prid);
+%>
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
@@ -78,13 +86,15 @@
         </div>
         <div class="col-sm-2">
           <div class="well">
+          <a href="appemp.jsp?item=<%=prid%>">
          <center>
            <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
           </div>
+          </a>
         </div>
         <div class="col-sm-2">
           <div class="well">
-          <a href="display.jsp">
+          <a href="first.jsp?item=<%=prid%>">
            <center>
            <img src="assets/images/Intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>
@@ -126,7 +136,9 @@
            <img src="assets/images/Finance&ContractManagement.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
           </div>
         </div>
+        
       </div>
+   
 </div>
 <div class="col-sm-3"></div>
 <br><br>
@@ -135,6 +147,18 @@
 </div>
 </div>
 
+   <center>
+      <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="project.jsp" tabindex="-1">Previous</a>
+    </li>
 
+    <li class="page-item disabled">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+</center>
 </body>
 </html>

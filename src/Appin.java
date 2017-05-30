@@ -40,7 +40,14 @@ public class Appin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String pid =request.getParameter("pid");
 				String appname = request.getParameter("appname");
+				String descr = request.getParameter("descr");
+				String rod = request.getParameter("rod");
+				String dbsize = request.getParameter("dbsize");
+				String dbloc = request.getParameter("dbloc");
+				String legappsme = request.getParameter("legappsme");
+				
 		           
 		        
 		        // do some processing here...
@@ -55,14 +62,14 @@ public class Appin extends HttpServlet {
 		        {
 		          // create a mysql database connection
 		          String myDriver = "org.gjt.mm.mysql.Driver";
-		          String myUrl = "jdbc:mysql://localhost:3306/onboard";
+		          String myUrl = "jdbc:mysql://localhost:3306/strutsdb";
 		          Class.forName(myDriver);
 		          Connection conn = DriverManager.getConnection(myUrl, "root", "root");
 		        
 		         
 		          // the mysql insert statement
-		          String query = " insert into applicat (appname)"
-		            + " values (?)";
+		          String query = " insert into appinfo (pid,appname,descr,rod,dbsize,dbloc,legappsme)"
+		            + " values (? ,? ,? ,?, ?, ?, ?)";
 
 		          // create the mysql insert preparedstatement
 		          //Scanner sin=new Scanner(System.in);
@@ -74,8 +81,13 @@ public class Appin extends HttpServlet {
 		          //System.out.println("would you like to have extra food today say y or n");
 		          //extra=sin.next();
 		          PreparedStatement preparedStmt = conn.prepareStatement(query);
-		          preparedStmt.setString (1, appname);
-		         		          
+		          preparedStmt.setString (1, pid);
+		          preparedStmt.setString (2, appname);
+		          preparedStmt.setString (3, descr);
+		          preparedStmt.setString (4, rod);
+		          preparedStmt.setString (5, dbsize);
+		          preparedStmt.setString (6, dbloc);
+		          preparedStmt.setString (7, legappsme);
 		          
 
 		          // execute the preparedstatement
@@ -90,7 +102,8 @@ public class Appin extends HttpServlet {
 		          System.err.println(e.getMessage());
 		        }
 		        // return response
-		        response.sendRedirect("first.jsp");
+		        request.setAttribute("value", pid);
+		        request.getRequestDispatcher("/firstinsert.jsp").forward(request, response);
 				
 
 	}

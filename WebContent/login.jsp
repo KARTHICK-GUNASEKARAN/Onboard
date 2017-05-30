@@ -23,7 +23,7 @@ if((rs.getString(4).equals(pwd)) && (rs.getString(8).equalsIgnoreCase("admin")))
 { 
 	
 	
-		        String redirectURL = "first.jsp";
+		        String redirectURL = "project.jsp";
 	
 		        response.sendRedirect(redirectURL);
 	

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
+<html lang="en">
+<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>Blueprint: View Mode Switch</title>
+		<title>Projects</title>
 		<meta name="description" content="Blueprint: View Mode Switch" />
 		<meta name="keywords" content="view mode, switch, css, style, grid, list, template" />
 		<meta name="author" content="Codrops" />
@@ -24,14 +24,6 @@
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
  <script type='text/javascript'
   src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<link rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script
-  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
    <!--  jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
@@ -127,21 +119,22 @@ $(function() {
 function editRecord(id){
     var f=document.form;
     f.method="post";
-    f.action='first.jsp';
+    f.action='grid.jsp?id='+id;
     f.submit();
 }
 </script>
   
 	</head>
-	<body>
-	<%@page language="java"%>
+	<!--from  w  w w  . ja  va 2 s.co  m-->
+  <body style='margin:30px'>
+  <%@page language="java"%>
 <%@page import="java.sql.*"%>
 
 
 
-<form method="post" name="form" action="Project">
-		<div class="container">
-			<nav class="navbar navbar-inverse navbar-fixed-top">
+<form method="post" name="form" action="Appin">
+<div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 
                     
@@ -165,19 +158,26 @@ function editRecord(id){
                 </div>
             </div>
         </nav>
-        <br>
-        <br>
-        <br>
+        </div>
        
-         
-        <span><h1 class="page-header" >Projects</h1></span>
-       
-			<div class="main">
+            <div class="row">
+            <br>
+                <div class="col-sm-2 col-md-2 sidebar">
+                    <ul class="nav nav-sidebar">
+                    <br>
+                       
+                    </ul>
+                </div>
+                
+                <div class="col-md-9">
+                    <h1 class="page-header">Projects</h1>
+                    
+                    <div class="main">
 				<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
 				
 					<div class="cbp-vm-options">
-					<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-  New Project 
+		<button type="button" class="btn btn-primary pull-right"  name="newpr"   onclick="location.href = 'newproject.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  New Project
 </button>
 						<a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid">Grid View</a>
 						<a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
@@ -206,22 +206,29 @@ while(rs.next()){
 				
 						<li>
 							
+							<% System.out.println(rs.getString(1));
+							 %>
 							
-							<div class="cbp-vm-price" ><%=rs.getString(1)%></div>
-							<h3 class="cbp-vm-title"><%=rs.getString(2)%></h3>
-							<div class="cbp-vm-details">
-								<%=rs.getString(4)%>
-							</div>
-							 <div class="progress">
-  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10"
+							<h3 class="cbp-vm-title left-col primary" name="name" value="<%= rs.getString(1)%>"><%=rs.getString(2)%></h3>
+							<center><div class="progress center-col cbp-vm-detail">
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10"
   aria-valuemin="0" aria-valuemax="100" style="width:10%">
     10%
   </div>
-</div> 
-							<a class="btn btn-primary" href="#" name="name" onClick="editRecord(<%=rs.getString(1)%>);">Add Application</a>
+  
+							
+</div> 	
+		
+</center>
+			<h5 class="cbp-vm-title right-col primary" >Initiate</h5>
+		
+							
+							<button type="button" class="btn btn-primary" name="btn" onClick="editRecord(<%=rs.getString(1)%>);">
+ View/Update
+</button>
 						</li>
 												
-					
+				
 					<%
 }
 %>
@@ -233,75 +240,16 @@ e.printStackTrace();
 }
 %>
 				</div>
-			</div><!-- /main -->
-			      <div id="one" class="panel-body text-left">
-                     
-                     <!-- Button trigger modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Project Details</h4>
-      </div>
-      <div class="modal-body">
-      <div class="form-group row log-date">
-          <div class="col-md-12">
-            <label class="control-label required">Project Name</label>
-            <input placeholder="Project Name" id="date" name="Projectname" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
-          </div>
-          
-        </div>
-        <div class="form-group row log-date">
-          <div class="col-md-12">
-            <label class="control-label required">Description</label>
-            <textarea class="form-control" placeholder="Description" name="Descr"></textarea>
-            </div>
-          
-        </div>
-        <div class="form-group row log-date">
-          <div class="col-md-12">
-            <label class="control-label required">Company</label>
-            <input placeholder="Company Name"  name="Company" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
-          </div>
-          
-        </div>
-        <div class="form-group row log-date">
-          <div class="col-md-12">
-            <label class="control-label required">Start Date</label>
-            <input placeholder="MM/dd/yyyy" id="date" name="Startdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
-          </div>
-          
-        </div>
-        <div class="form-group row log-date">
-          <div class="col-md-12">
-            <label class="control-label required">End Date</label>
-            <input placeholder="MM/dd/yyyy" id="date" name="Enddate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
-          </div>
-          
-        </div>
-        
-        
-      </div>
-      
-      <div class="modal-footer">
-  
-      
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="Submit" class="btn btn-primary" onClick="reload">Save changes</button>
-       
-      </div>
-    </div>
-  </div>
-</div>
-    
+			</div> 
+   
+       </div>
                 
-	
-	</div>
-		</div><!-- /container -->
-		<script src="js/classie.js"></script>
+            </div>
+            
+      
+        
+</form>
+<script src="js/classie.js"></script>
 		<script src="js/cbpViewModeSwitch.js"></script>
-	</body>
+  </body>
 </html>
