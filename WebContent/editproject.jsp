@@ -189,7 +189,7 @@ if(rs.next()){
 %>
 
  
-<form class="form-signin" name="loginForm" method="post" action="Project">
+<form class="form-signin" name="loginForm" method="get" action="MultipleSubmitForms">
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
@@ -253,7 +253,12 @@ if(rs.next()){
                                     
                                     
                                         <form role="form">
-                                        
+                                        <div class="form-group"> 
+                                            <label class="control-label" for="formInput198">
+                                               Project ID&nbsp;
+</label>
+                                            <input type="text" class="form-control" id="formInput198" placeholder="Project ID" name="projectid" value="<%=rs.getString("pid")%>" >
+                                        </div>
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput198">
                                                Project Name&nbsp;
@@ -323,14 +328,102 @@ if(rs.next()){
                             
                                 </div>                                 
                             </div>                             
-                        </div>                         
-                       <button type="submit" class="btn btn-primary btn pull-left" >Save</button>&nbsp;
+                        </div>  
+                        <%
+Connection con = null;
+String url = "jdbc:mysql://localhost:3306/";
+String db = "strutsdb";
+String driver = "com.mysql.jdbc.Driver";
+String userName ="root";
+String password="root";
+
+int sumcount=0;
+Statement st1;
+try{
+Class.forName(driver).newInstance();
+con = DriverManager.getConnection(url+db,userName,password);
+String query1 = "select * from appinfo where pid='"+no+"'";
+st1 = con.createStatement();
+ResultSet rs1 = st1.executeQuery(query1);
+%>             
+<div class="panel panel-default">
+        <div class="panel-heading"> 
+                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse2"> Application Information  </a> </h4> 
+                            </div>  
+                                                       
+                            <div id="collapse2" class="panel-collapse collapse"> 
+                                <div class="panel-body text-left">
+                                
+                                
+<div class="table-responsive" id="table-scroll"> 
+    
+    <!-- Initialization 
+                * js-dynamitable => dynamitable trigger (table)
+                -->
+    <table class="js-dynamitable     table table-bordered" id="myTable">
+      
+      <!-- table heading -->
+      <thead>
+        
+        <!-- Sortering
+                        * js-sorter-asc => ascending sorter trigger
+                        * js-sorter-desc => desending sorter trigger
+                        -->
+        <tr>
+          <th>Application Name <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> </th>
+         
+        </tr>
+        
+        <!-- Filtering
+                        * js-filter => filter trigger (input, select)
+                        -->
+       
+      </thead>
+      
+      <!-- table body -->
+      <tbody>
+      <%
+while(rs1.next()){
+%>
+        <tr>
+        
+          <td class="edit_row" style="cursor:pointer"><%=rs1.getString(3) %></td>
+         
+         
+        </tr>
+      <%
+}
+%>      
+      </tbody>
+    </table>
+    <%
+
+}
+catch(Exception e){
+e.printStackTrace();
+}
+%>
+  </div>
+  <br />
+                
+                 
+                                            <label class="control-label" for="formInput198">
+                                               Application Name&nbsp;
+</label>
+                                            <input type="text" class="form-control" id="formInput198" placeholder="Application Name" name="appname" >
+                                                                               <input type="submit" class="btn btn-primary btn pull-left" name ="p1" value="Add">;
+                
+                            
+                                </div>                                 
+                            </div>                             
+                        </div>            
+                       <input type="submit" class="btn btn-primary btn pull-left" name="a1" value="Save">
                     <button type="button" class="btn btn-default" onclick="location.href='appemp.jsp';">Back</button>
                                         
-                                                                           </form>                               
+                                                                                                         
                    
                                                                                         
-                                   
+                     </form>              
         
                     
                   

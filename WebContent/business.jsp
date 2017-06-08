@@ -135,9 +135,7 @@ ResultSet rs = st.executeQuery(query);
                         <li class="active">
                             <a href="project.jsp">Home </a>
                         </li>
-                        <li >
-                            <a href="display.jsp">Application Information</a>
-                        </li>
+                       
                         <li class="active"><a href="business.jsp"><bold>Business</bold></a></li>
                             
                         
@@ -145,7 +143,7 @@ ResultSet rs = st.executeQuery(query);
                             <a href="sample.jsp">Technical</a>
                         </li>
                         <li>
-                            <a href="sample.jsp">Requirements</a>
+                            <a href="requirements.jsp">Archival Requirements</a>
                         </li>
                        
                     </ul>

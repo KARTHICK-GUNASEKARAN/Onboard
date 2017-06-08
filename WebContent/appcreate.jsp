@@ -233,7 +233,7 @@ System.out.println(prid);
                                             <label class="control-label" for="formInput198">
                                                Project ID&nbsp;
 </label>
-                                            <input type="text" class="form-control" id="formInput198" placeholder="Project Name" name="pid" value="<%= no%>"  >
+                                            <input type="text" class="form-control" id="formInput198" placeholder="Project Name" name="pid" value="<%= prid%>" disabled >
                                         </div>
                                         
                                         <div class="form-group"> 
@@ -304,9 +304,8 @@ System.out.println(prid);
                     
         <button type="submit" class="btn btn-primary btn pull-left" >Save</button>&nbsp;
                     <button type="button" class="btn btn-default" >Back</button> 
-                    </form>
        </div>
-                  
+              </form>    
             </div>
             
          <center>

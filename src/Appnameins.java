@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Appin
  */
-@WebServlet("/Appin")
-public class Appin extends HttpServlet {
+@WebServlet("/Appnameins")
+public class Appnameins extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Appin() {
+    public Appnameins() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,15 +40,10 @@ public class Appin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String pid =request.getParameter("pid");
-		System.out.println("Servlet pid"+pid);
+		String pid =request.getParameter("projectid");
+		
 				String appname = request.getParameter("appname");
-				System.out.println("Servlet apname"+appname);
-				String descr = request.getParameter("descr");
-				String rod = request.getParameter("rod");
-				String dbsize = request.getParameter("dbsize");
-				String dbloc = request.getParameter("dbloc");
-				String legappsme = request.getParameter("legappsme");
+				
 				
 		           
 		        
@@ -70,8 +65,8 @@ public class Appin extends HttpServlet {
 		        
 		         
 		          // the mysql insert statement
-		          String query = " insert into appinfo (pid,appname,descr,rod,dbsize,dbloc,legappsme)"
-		            + " values (? ,? ,? ,?, ?, ?, ?)";
+		          String query = " insert into appinfo (pid,appname)"
+		            + " values (? ,?)";
 
 		          // create the mysql insert preparedstatement
 		          //Scanner sin=new Scanner(System.in);
@@ -85,22 +80,12 @@ public class Appin extends HttpServlet {
 		          PreparedStatement preparedStmt = conn.prepareStatement(query);
 		          preparedStmt.setString (1, pid);
 		          preparedStmt.setString (2, appname);
-		          preparedStmt.setString (3, descr);
-		          preparedStmt.setString (4, rod);
-		          preparedStmt.setString (5, dbsize);
-		          preparedStmt.setString (6, dbloc);
-		          preparedStmt.setString (7, legappsme);
+		         
 		          
 
 		          // execute the preparedstatement
 		          preparedStmt.execute();
-		          response.setContentType("text/html");
-
-			        // New location to be redirected
-			        String site = new String("firstinsert.jsp");
-
-			        response.setStatus(response.SC_MOVED_TEMPORARILY);
-			        response.setHeader("Location", site);  
+		         
 		          conn.close();
 		         
 		        }
@@ -112,7 +97,7 @@ public class Appin extends HttpServlet {
 		        }
 		        // return response
 		      
-		         
+		        response.sendRedirect("project.jsp"); 
 
 	}
 
